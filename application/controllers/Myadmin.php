@@ -18,6 +18,13 @@ class Myadmin extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct(){
+		parent::__construct();
+		$this->load->database();
+		$this->load->model('Modeladmin');
+	}
+
 	public function index()
 	{
 		$data ['title'] = "Yoga Afdilla Jamaluddin | Sekolah Tinggi Teknologi Bandung";
@@ -28,6 +35,7 @@ class Myadmin extends CI_Controller {
 
 	public function tambahdata(){
 		$data['title'] = "Tambah Data | Sekolah Tinggi Teknologi Bandung";
+		$data['tampil'] = $this->Modeladmin->tampil_data();
 		$this->load->view('headadm', $data);
 		$this->load->view('dashboard');
 		$this->load->view('modul/tambahdata');
@@ -36,15 +44,15 @@ class Myadmin extends CI_Controller {
 	function aksi_tambah_data(){
 		$nama = $this->input->post('nama');
 		$npm = $this->input->post('npm');
-		$semster = $this->input->post('semster');
+		$semester = $this->input->post('semester');
 
 		$data = array (
-			'int_npm' == $npm ,
-			'str_nama'== $nama ,
-			'int_semster' == $semster ,
+			'int_npm' => $npm ,
+			'str_nama'=> $nama ,
+			'int_semester' => $semester
 		);
 
-		$this->Model_admin->$data;
+		$this->Modeladmin->tambah_data($data,'data_mahasiswa');
 		redirect('Myadmin/tambahdata');
 	}
 }
