@@ -3,22 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Myadmin extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-
 	function __construct(){
 		parent::__construct();
 		$this->load->database();
@@ -27,32 +11,107 @@ class Myadmin extends CI_Controller {
 
 	public function index()
 	{
+		$data['mahasiswa'] = $this->Modeladmin->tampil_data();
+		$data['mahasiswa1'] = $this->Modeladmin->tampil_data();
 		$data ['title'] = "Yoga Afdilla Jamaluddin | Sekolah Tinggi Teknologi Bandung";
-		$this->load->view('headadm', $data);
-		$this->load->view('dashboard');
-		$this->load->view('footadm');
+		$this->load->view('template/header', $data);
+		$this->load->view('template/sidebar');
+		$this->load->view('dashboard', $data);
+		$this->load->view('template/footer');
 	}
 
 	public function tambahdata(){
 		$data['title'] = "Tambah Data | Sekolah Tinggi Teknologi Bandung";
-		$data['tampil'] = $this->Modeladmin->tampil_data();
-		$this->load->view('headadm', $data);
+		$data['mahasiswa'] = $this->Modeladmin->tampil_data();
+		$this->load->view('template/header', $data);
+		$this->load->view('template/sidebar');
 		$this->load->view('dashboard');
-		$this->load->view('modul/tambahdata');
+		$this->load->view('template/footer');
 	}
 
 	function aksi_tambah_data(){
-		$nama = $this->input->post('nama');
 		$npm = $this->input->post('npm');
+		$nama = $this->input->post('nama');
 		$semester = $this->input->post('semester');
+		$gambar = $_FILES['gambar']['name'];
+		if ($gambar =''){
+		}else{
+			$config ['upload_path'] = './uploads';
+			$config ['allowed_types'] = 'jpg|jpeg|png|gif';
 
-		$data = array (
-			'int_npm' => $npm ,
-			'str_nama'=> $nama ,
-			'int_semester' => $semester
-		);
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('gambar')){
+				echo "Gambar Gagal Di Upload!";
+			}else{
+				$gambar = $this->upload->data('file_name');
+			}
+		}
+
+		$data = array ( 'int_npm' => $npm , 'str_nama'=> $nama , 'int_semester' =>
+		$semester, 'gambar' => $gambar );
 
 		$this->Modeladmin->tambah_data($data,'data_mahasiswa');
-		redirect('Myadmin/tambahdata');
+		redirect('Myadmin/index');
+	}
+
+	public function detail($id){
+		$where = array('id'=>$id);
+		$data['mahasiswa'] = $this->Modeladmin->tampil_data($where,'data_mahasiswa');
+		$this->load->view('template/header');
+		$this->load->view('template/sidebar');
+		$this->load->view('detail_mahasiswa', $data);
+		$this->load->view('template/footer');
+	}
+
+	public function edit($id)
+	{
+		$where = array('id'=>$id);
+		$data['mahasiswa'] = $this->Modeladmin->edit_mahasiswa($where,'data_mahasiswa')->result();
+		$this->load->view('template/header', $data);
+		$this->load->view('template/sidebar');
+		$this->load->view('edit_mahasiswa', $data);
+		$this->load->view('template/footer');
+
+	}
+
+	public function update(){ 
+		$id = $this->input->post('id');
+		$npm = $this->input->post('npm');
+		$nama = $this->input->post('nama');
+		$semester = $this->input->post('semester');
+		$gambar = $_FILES['gambar']['name'];
+		if ($gambar =''){
+		}else{
+			$config ['upload_path'] = './uploads';
+			$config ['allowed_types'] = 'jpg|jpeg|png|gif';
+
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('gambar')){
+				echo "Gambar Gagal Di Upload!";
+			}else{
+				$gambar = $this->upload->data('file_name');
+			}
+		}
+
+		$data = array(
+			'int_npm' => $npm,
+			'str_nama' => $nama,
+			'int_semester' => $semester,
+			'gambar' => $gambar
+		);
+
+		$where = array(
+			'id' => $id
+		);
+
+		$this->Modeladmin->update_data($where,$data,'data_mahasiswa');
+		redirect('Myadmin/index');
+	}
+
+	public function hapus($id){
+		$where = array('id' => $id);
+		$this->Modeladmin->hapus_data($where, 'data_mahasiswa');
+
+		redirect('Myadmin/index');
 	}
 }
