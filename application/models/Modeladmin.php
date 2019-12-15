@@ -28,6 +28,11 @@ class Modeladmin extends CI_model{
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
+
+	function hapus_mhs($kode_mhs){
+		$hasil=$this->db->query("DELETE FROM data_mahasiswa WHERE id='$id'");
+		return $hasil;
+	}
 }
 
 ?>

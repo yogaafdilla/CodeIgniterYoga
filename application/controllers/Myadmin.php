@@ -114,4 +114,10 @@ class Myadmin extends CI_Controller {
 
 		redirect('Myadmin/index');
 	}
+
+	function hapus_mhs($id){
+		$kode_mhs=$this->input->post('kode_mhs');
+		$this->Modeladmin->hapus_mhs($kode_mhs);
+		redirect('Myadmin');
+	}
 }

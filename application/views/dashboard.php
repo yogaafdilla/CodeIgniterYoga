@@ -5,12 +5,13 @@
 
 		<table class="table table-bordered" >
 			<tr>
-				<th>No</th>
+				<!-- <th>No</th> -->
+				<th>ID</th>
 				<th>NPM Mahasiswa</th>
 				<th>Nama Mahasiswa</th>
 				<th>Semester</th>
 				<th>Gambar</th>
-				<th colspan="3">Aksi</th>
+				<th colspan="4">Aksi</th>
 			</tr>
 
 			<?php
@@ -18,7 +19,7 @@
 			foreach ($mahasiswa as $mhs) :?>
 
 				<tr>
-					<td><?php echo $no++ ?></td>
+					<!-- <td><?php echo $no++ ?></td> -->
 					<td><?php echo $mhs->id ?></td>
 					<td><?php echo $mhs->int_npm ?></td>
 					<td><?php echo $mhs->str_nama ?></td>
@@ -28,7 +29,7 @@
 					<td><?php echo anchor('Myadmin/edit/'.$mhs->id,'<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?></td>
 
 					<td>
-						<a class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal_hapus<?php echo $mhs->int_npm;?>"> Hapus </a>
+						<a class="btn btn-xs btn-danger btn-sm" data-toggle="modal" data-target="#modal_hapus<?php echo $mhs->int_npm;?>"> Hapus </a>
 					</td>
 					<td>
 						<?php echo anchor('Myadmin/hapus/'.$mhs->id,'<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?>
@@ -44,15 +45,15 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button> -->
-					<h3 class="modal-title" id="myModalLabel">Hapus Barang</h3>
+					<h3 class="modal-title" id="myModalLabel">Hapus Data Mahasiswa</h3>
 				</div>
-				<form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/Myadmin/hapus'?>">
+				<form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/Myadmin/hapus_mhs'?>">
 					<div class="modal-body">
-						<p>Anda yakin mau menghapus <b><?php echo $mhs->str_nama;?></b></p>
+						<p>Anda yakin ingin menghapus data <b><?php echo $mhs->str_nama;?></b> ? ? ?</p>
 					</div>
 					<div class="modal-footer">
-						<input type="hidden" name="id" value="<?php echo $mhs->int_npm;?>">
-						<button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+						<input type="hidden" name="npm" value="<?php echo $mhs->int_npm;?>">
+						<button class="btn btn-info" data-dismiss`="modal" aria-hidden="true">Tutup</button>
 						<button class="btn btn-danger">Hapus</button>
 					</div>
 				</form>
