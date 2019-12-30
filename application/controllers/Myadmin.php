@@ -5,6 +5,10 @@ class Myadmin extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
+
+		if($this->session->userdata('status') != "login"){
+			redirect(base_url("login"));
+		}
 		$this->load->database();
 		$this->load->model('Modeladmin');
 	}
@@ -120,4 +124,5 @@ class Myadmin extends CI_Controller {
 		$this->Modeladmin->hapus_mhs($kode_mhs);
 		redirect('Myadmin');
 	}
+
 }

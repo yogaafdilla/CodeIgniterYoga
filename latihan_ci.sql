@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2019 at 01:10 PM
+-- Generation Time: Dec 30, 2019 at 02:00 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -25,6 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `data_login`
+--
+
+CREATE TABLE `data_login` (
+  `id` int(11) NOT NULL,
+  `username` varchar(12) NOT NULL,
+  `password` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `data_login`
+--
+
+INSERT INTO `data_login` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(2, 'yoga', '6b3bebb6d418f3726781486e710abee36f1b371b'),
+(3, 'jamal', 'e0195770807aa8c82b0b128d9c0423b5ad035172');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `data_mahasiswa`
 --
 
@@ -41,14 +62,21 @@ CREATE TABLE `data_mahasiswa` (
 --
 
 INSERT INTO `data_mahasiswa` (`id`, `int_npm`, `str_nama`, `int_semester`, `gambar`) VALUES
-(21, 17111156, 'Yoga Afdilla Jamaluddin', 5, 'https___blogs-images_forbes_com_ryanwhitwam_files_2017_12_arena-of-valor.jpg'),
-(22, 17111171, 'Dendi ', 5, 'wp3276889-pubg-4k-wallpapers1.jpg'),
-(23, 17111111, 'Reynaldi', 5, 'Logo-avengers-wallpaper-HD-pictures-download.jpg'),
-(29, 17111156, 'yoga', 1, 'Fairy-Tail0011.jpg');
+(1, 17111156, 'Yoga Afdilla Jamaluddin', 5, 'https___blogs-images_forbes_com_ryanwhitwam_files_2017_12_arena-of-valor1.jpg'),
+(2, 17111111, 'Dendi ', 4, 'wp3276889-pubg-4k-wallpapers1.jpg'),
+(3, 17111112, 'Reynaldi', 3, 'Logo-avengers-wallpaper-HD-pictures-download.jpg'),
+(4, 17111113, 'Naufal', 2, 'gov_gaming___Bo6IZfmAZT9___.jpg'),
+(5, 17111114, 'Denar', 1, 'bumidatar.jpg');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `data_login`
+--
+ALTER TABLE `data_login`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `data_mahasiswa`
@@ -61,10 +89,16 @@ ALTER TABLE `data_mahasiswa`
 --
 
 --
+-- AUTO_INCREMENT for table `data_login`
+--
+ALTER TABLE `data_login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `data_mahasiswa`
 --
 ALTER TABLE `data_mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
