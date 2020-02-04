@@ -1,2 +1,2 @@
 # CodeIgniterYoga
-Latihan CI Mata Kuliah Web Programming 2
+Repositories ini berisikan project untuk UAS Web Programing 2
