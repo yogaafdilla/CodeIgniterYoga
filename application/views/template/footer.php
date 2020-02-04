@@ -1,3 +1,17 @@
+<footer class="site-footer">
+	<div class="container">
+		<div class="row pt-5 mt-5 text-center">
+			<div class="col-md-12">
+				<div class="border-top pt-5">
+					<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved by Yoga Afdilla</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script src="<?php echo base_url('assets\sweetalert\sweetalert2.min.js') ?>"></script>
+
 <!-- Bootstrap core JavaScript-->
 <script src="<?php echo base_url() ?>assets/vendor/jquery/jquery.min.js"></script>
 <script src="<?php echo base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -15,14 +29,15 @@
 <script src="<?php echo base_url() ?>assets/js/demo/chart-area-demo.js"></script>
 <script src="<?php echo base_url() ?>assets/js/demo/chart-pie-demo.js"></script>
 
-<script src="<?php echo base_url().'assets/js/jquery-2.2.4.min.js'?>"></script>
-<script src="<?php echo base_url().'assets/js/bootstrap.js'?>"></script>
-<script src="<?php echo base_url().'assets/js/jquery.dataTables.min.js'?>"></script>
-<script src="<?php echo base_url().'assets/js/moment.js'?>"></script>
+<script src="<?php echo base_url() . 'assets/js/jquery-2.2.4.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/js/bootstrap.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/js/jquery.dataTables.min.js' ?>"></script>
+<script src="<?php echo base_url() . 'assets/js/moment.js' ?>"></script>
+
 <script>
-  $(document).ready(function(){
-    $('#mydata').DataTable();
-  });
+	$(document).ready(function () {
+		$('.data').DataTable();
+	});
 </script>
 
 </body>

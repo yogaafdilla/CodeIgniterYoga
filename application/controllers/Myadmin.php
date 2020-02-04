@@ -1,128 +1,138 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Myadmin extends CI_Controller {
 
-	function __construct(){
-		parent::__construct();
+    function __construct() {
+        parent::__construct();
 
-		if($this->session->userdata('status') != "login"){
-			redirect(base_url("login"));
-		}
-		$this->load->database();
-		$this->load->model('Modeladmin');
-	}
+        if ($this->session->userdata('status') != "login") {
+            redirect(base_url("home"));
+        }
+        $this->load->database();
+        $this->load->model('Modeladmin');
+    }
 
-	public function index()
-	{
-		$data['mahasiswa'] = $this->Modeladmin->tampil_data();
-		$data['mahasiswa1'] = $this->Modeladmin->tampil_data();
-		$data ['title'] = "Yoga Afdilla Jamaluddin | Sekolah Tinggi Teknologi Bandung";
-		$this->load->view('template/header', $data);
-		$this->load->view('template/sidebar');
-		$this->load->view('dashboard', $data);
-		$this->load->view('template/footer');
-	}
+    public function index() {
+        $data['mahasiswa'] = $this->Modeladmin->tampil_data();
+        $data ['title'] = "Yoga Afdilla Jamaluddin | Sekolah Tinggi Teknologi Bandung";
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar');
+        $this->load->view('dashboard', $data);
+        // $this->load->view('datatabel');
+        $this->load->view('template/footer');
+    }
 
-	public function tambahdata(){
-		$data['title'] = "Tambah Data | Sekolah Tinggi Teknologi Bandung";
-		$data['mahasiswa'] = $this->Modeladmin->tampil_data();
-		$this->load->view('template/header', $data);
-		$this->load->view('template/sidebar');
-		$this->load->view('dashboard');
-		$this->load->view('template/footer');
-	}
+    public function tambahdata() {
+        $data['title'] = "Tambah Data | Sekolah Tinggi Teknologi Bandung";
+        $data['mahasiswa'] = $this->Modeladmin->tampil_data();
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar');
+        $this->load->view('dashboard');
+        $this->load->view('template/footer');
+    }
 
-	function aksi_tambah_data(){
-		$npm = $this->input->post('npm');
-		$nama = $this->input->post('nama');
-		$semester = $this->input->post('semester');
-		$gambar = $_FILES['gambar']['name'];
-		if ($gambar =''){
-		}else{
-			$config ['upload_path'] = './uploads';
-			$config ['allowed_types'] = 'jpg|jpeg|png|gif';
+    // function aksi_tambah_data() {
+    //     $npm = $this->input->post('npm');
+    //     $nama = $this->input->post('nama');
+    //     $prodi = $this->input->post('prodi');
+    //     $kelas = $this->input->post('kelas');
+    //     $semester = $this->input->post('semester');
+    //     $gambar = $_FILES['gambar']['name'];
+    //     $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+    //       Data Mahasiswa Berhasil DItambah</div>');
+    //     if ($gambar = '') {
 
-			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('gambar')){
-				echo "Gambar Gagal Di Upload!";
-			}else{
-				$gambar = $this->upload->data('file_name');
-			}
-		}
+    //     } else {
+    //         $config ['upload_path'] = './uploads';
+    //         $config ['allowed_types'] = 'jpg|jpeg|png|gif';
 
-		$data = array ( 'int_npm' => $npm , 'str_nama'=> $nama , 'int_semester' =>
-		$semester, 'gambar' => $gambar );
+    //         $this->load->library('upload', $config);
+    //         if (!$this->upload->do_upload('gambar')) {
+    //             echo "Gambar Gagal Di Upload!";
+    //         } else {
+    //             $gambar = $this->upload->data('file_name');
+    //         }
+    //     }
 
-		$this->Modeladmin->tambah_data($data,'data_mahasiswa');
-		redirect('Myadmin/index');
-	}
+    //     $data = array('int_npm' => $npm, 'str_nama' => $nama, 'str_prodi' => $prodi, 'str_kelas' => $kelas, 'int_semester' =>
+    //         $semester, 'gambar' => $gambar);
 
-	public function detail($id){
-		$where = array('id'=>$id);
-		$data['mahasiswa'] = $this->Modeladmin->tampil_data($where,'data_mahasiswa');
-		$this->load->view('template/header');
-		$this->load->view('template/sidebar');
-		$this->load->view('detail_mahasiswa', $data);
-		$this->load->view('template/footer');
-	}
+    //     $this->Modeladmin->tambah_data($data, 'data_mahasiswa');
+    //     redirect('Myadmin/index');
+    // }
 
-	public function edit($id)
-	{
-		$where = array('id'=>$id);
-		$data['mahasiswa'] = $this->Modeladmin->edit_mahasiswa($where,'data_mahasiswa')->result();
-		$this->load->view('template/header', $data);
-		$this->load->view('template/sidebar');
-		$this->load->view('edit_mahasiswa', $data);
-		$this->load->view('template/footer');
+    // public function detail($id) {
+    //     $where = array('id' => $id);
+    //     $data['mahasiswa'] = $this->Modeladmin->tampil_data($where, 'data_mahasiswa');
+    //     $this->load->view('template/header');
+    //     $this->load->view('template/sidebar');
+    //     $this->load->view('detail_mahasiswa', $data);
+    //     $this->load->view('template/footer');
+    // }
 
-	}
+    // public function edit($id) {
+    //     $where = array('id' => $id);
+    //     $data['mahasiswa'] = $this->Modeladmin->edit_mahasiswa($where, 'data_mahasiswa')->result();
+    //     $this->load->view('template/header', $data);
+    //     $this->load->view('template/sidebar');
+    //     $this->load->view('edit_mahasiswa', $data);
+    //     $this->load->view('template/footer');
+    // }
 
-	public function update(){ 
-		$id = $this->input->post('id');
-		$npm = $this->input->post('npm');
-		$nama = $this->input->post('nama');
-		$semester = $this->input->post('semester');
-		$gambar = $_FILES['gambar']['name'];
-		if ($gambar =''){
-		}else{
-			$config ['upload_path'] = './uploads';
-			$config ['allowed_types'] = 'jpg|jpeg|png|gif';
+    // public function update() {
+    //     $id = $this->input->post('id');
+    //     $npm = $this->input->post('npm');
+    //     $nama = $this->input->post('nama');
+    //     $prodi = $this->input->post('prodi');
+    //     $kelas = $this->input->post('kelas');
+    //     $semester = $this->input->post('semester');
+    //     $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+    //       Data Mahasiswa Berhasil DIubah</div>');
+    //     $gambar = $_FILES['gambar']['name'];
+    //     if ($gambar = '') {
 
-			$this->load->library('upload', $config);
-			if (!$this->upload->do_upload('gambar')){
-				echo "Gambar Gagal Di Upload!";
-			}else{
-				$gambar = $this->upload->data('file_name');
-			}
-		}
+    //     } else {
+    //         $config ['upload_path'] = './uploads';
+    //         $config ['allowed_types'] = 'jpg|jpeg|png|gif';
 
-		$data = array(
-			'int_npm' => $npm,
-			'str_nama' => $nama,
-			'int_semester' => $semester,
-			'gambar' => $gambar
-		);
+    //         $this->load->library('upload', $config);
+    //         if (!$this->upload->do_upload('gambar')) {
+    //             echo "Gambar Gagal Di Upload!";
+    //         } else {
+    //             $gambar = $this->upload->data('file_name');
+    //         }
+    //     }
 
-		$where = array(
-			'id' => $id
-		);
+    //     $data = array(
+    //         'int_npm' => $npm,
+    //         'str_nama' => $nama,
+    //         'str_prodi' => $prodi,
+    //         'str_kelas' => $kelas,
+    //         'int_semester' => $semester,
+    //         'gambar' => $gambar
+    //     );
 
-		$this->Modeladmin->update_data($where,$data,'data_mahasiswa');
-		redirect('Myadmin/index');
-	}
+    //     $where = array(
+    //         'id' => $id
+    //     );
 
-	public function hapus($id){
-		$where = array('id' => $id);
-		$this->Modeladmin->hapus_data($where, 'data_mahasiswa');
+    //     $this->Modeladmin->update_data($where, $data, 'data_mahasiswa');
+    //     redirect('Myadmin/index');
+    // }
 
-		redirect('Myadmin/index');
-	}
+    // public function hapus($id) {
+    //     $where = array('id' => $id);
+    //     $this->Modeladmin->hapus_data($where, 'data_mahasiswa');
 
-	function hapus_mhs($id){
-		$kode_mhs=$this->input->post('kode_mhs');
-		$this->Modeladmin->hapus_mhs($kode_mhs);
-		redirect('Myadmin');
-	}
+    //     redirect('Myadmin/index');
+    // }
 
+    // function hapus_mhs($id) {
+    //     $kode_mhs = $this->input->post('kode_mhs');
+    //     $this->Modeladmin->hapus_mhs($kode_mhs);
+    //     redirect('Myadmin');
+    // }
+    
 }
