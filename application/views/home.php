@@ -65,7 +65,7 @@
                         <h1 class="text-uppercase" data-aos="fade-up">Sekolah Tinggi Teknologi Bandung</h1>
                         <p class="mb-5 desc"  data-aos="fade-up" data-aos-delay="100">Salah satu Perguruan Tinggi di Kota Bandung yang mencetak mahasiswa berdaya saing dan unggul di bidang Teknologi.</p>
                         <div data-aos="fade-up" data-aos-delay="100">
-                            <a href="<?php echo base_url('Login/index') ?>" class="btn smoothscroll btn-primary mr-2 mb-2">Mulai</a>
+                            <a href="<?php echo base_url('Login_user/index') ?>" class="btn smoothscroll btn-primary mr-2 mb-2">Mulai</a>
                         </div>
                     </div>
 
