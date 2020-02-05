@@ -16,16 +16,16 @@ class Register extends CI_Controller {
         $this->load->view('template/footer');
     }
 
-    function register() {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        $data = array(
-            'username' => $username,
-            'password' => sha1($password));
-        // 'level' => '1');
-        $this->m_login->tambah('data_login', $data);
-        redirect('login');
-    }
+    // function register() {
+    //     $username = $this->input->post('username');
+    //     $password = $this->input->post('password');
+    //     $data = array(
+    //         'username' => $username,
+    //         'password' => sha1($password));
+    //     // 'level' => '1');
+    //     $this->m_login->tambah('data_login', $data);
+    //     redirect('login');
+    // }
 
     function daftar() { 
         $npm = $this->input->post("npm");
@@ -43,16 +43,16 @@ class Register extends CI_Controller {
                 $this->m_login->tambah('data_login_user', $data);
                 $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
                   Akun Berhasil Dibuat</div>');
-                redirect("Register/index");
+                redirect("Register");
             } else {
                 $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
                     Daftar Gagal karena NPM tidak ditemukan</div>');
-                redirect('Register/index');
+                redirect('Register');
             }
         } else {
             $this->session->set_flashdata('message','<div class="alert alert-warning" role="alert">
               Password Tidak Sama</div>');
-            redirect('Register/index');
+            redirect('Register');
         }
     }
 

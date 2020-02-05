@@ -4,7 +4,7 @@ class Login_user extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        
+
         $this->load->model('m_login');
     }
 
@@ -19,14 +19,14 @@ class Login_user extends CI_Controller {
         $password = $this->input->post('password');
         $where = array(
             'int_npm' => $npm,
-            'password' => sha1($pass2)
+            'password' => sha1($password)
         );
         $cek = $this->m_login->cek_login("data_login_user", $where)->num_rows();
         if ($cek > 0) {
 
             $data_session = array(
                 'npm' => $npm,
-                'status_user' => "login"
+                'status' => "login"
             );
 
             $this->session->set_userdata($data_session);
@@ -35,13 +35,13 @@ class Login_user extends CI_Controller {
         } else {
             $this->session->set_flashdata('message_user','<div class="alert alert-danger" role="alert">
               NPM atau Password Salah</div>');
-            redirect ('login_user/index');
+            redirect ('login_user');
         }
     }
 
     function logout() {
         $this->session->sess_destroy();
-        redirect(base_url('login'));
+        redirect(base_url('home'));
     }
 
     function user(){

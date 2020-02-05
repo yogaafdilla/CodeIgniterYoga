@@ -67,7 +67,7 @@
 <script src="nitro/js/isotope.pkgd.min.js"></script>
 
 
-<script src="js/main.js"></script>
+<script src="nitro/js/main.js"></script>
 
 </body>
 </html>

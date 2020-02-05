@@ -4,34 +4,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Myadmin extends CI_Controller {
 
-    function __construct() {
-        parent::__construct();
+	function __construct() {
+		parent::__construct();
 
-        if ($this->session->userdata('status') != "login") {
-            redirect(base_url("home"));
-        }
-        $this->load->database();
-        $this->load->model('Modeladmin');
-    }
+		// if ($this->session->userdata('status') != "login") {
+		// 	redirect(base_url("home"));
+		// }
 
-    public function index() {
-        $data['mahasiswa'] = $this->Modeladmin->tampil_data();
-        $data ['title'] = "Yoga Afdilla Jamaluddin | Sekolah Tinggi Teknologi Bandung";
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar');
-        $this->load->view('dashboard', $data);
+		$this->load->database();
+		$this->load->model('Modeladmin');
+	}
+
+	public function index() {
+		$data['mahasiswa'] = $this->Modeladmin->tampil_data();
+		$data ['title'] = "Yoga Afdilla Jamaluddin | Sekolah Tinggi Teknologi Bandung";
+		$this->load->view('template/header', $data);
+		$this->load->view('template/sidebar');
+		$this->load->view('dashboard', $data);
         // $this->load->view('datatabel');
-        $this->load->view('template/footer');
-    }
+		$this->load->view('template/footer');
+	}
 
-    public function tambahdata() {
-        $data['title'] = "Tambah Data | Sekolah Tinggi Teknologi Bandung";
-        $data['mahasiswa'] = $this->Modeladmin->tampil_data();
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar');
-        $this->load->view('dashboard');
-        $this->load->view('template/footer');
-    }
+	public function tambahdata() {
+		$data['title'] = "Tambah Data | Sekolah Tinggi Teknologi Bandung";
+		$data['mahasiswa'] = $this->Modeladmin->tampil_data();
+		$this->load->view('template/header', $data);
+		$this->load->view('template/sidebar');
+		$this->load->view('dashboard');
+		$this->load->view('template/footer');
+	}
+}
 
     // function aksi_tambah_data() {
     //     $npm = $this->input->post('npm');
@@ -134,5 +136,5 @@ class Myadmin extends CI_Controller {
     //     $this->Modeladmin->hapus_mhs($kode_mhs);
     //     redirect('Myadmin');
     // }
-    
-}
+// 
+// }

@@ -21,11 +21,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" name="password" class="form-control" placeholder="Masukan Password Baru" required="required" id="txtPassword">
+                                        <input type="password" name="password1" class="form-control" placeholder="Masukan Password Baru" required="required" id="txtPassword">
                                     </div>
                                     <div class="form-group">
                                         <label>Retype Password</label>
-                                        <input type="password" name="retype-password" class="form-control" placeholder="Masukan Kembali Password" required="required" id="txtConfirmPassword">
+                                        <input type="password" name="password2" class="form-control" placeholder="Masukan Kembali Password" required="required" id="txtConfirmPassword">
                                     </div>
 
                                     <div class="form-group">

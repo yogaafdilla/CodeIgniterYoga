@@ -10,8 +10,8 @@ class M_Login extends CI_Model {
         $this->db->insert($table, $data);
     }
 
-    // public function getDataAdmin($username) {
-    //     return $this->db->query('SELECT nama FROM admin WHERE username = ' . $username)->result();
-    // }
+    public function getDataAdmin($username) {
+        return $this->db->query('SELECT nama FROM data_admin WHERE username = ' . $username)->result();
+    }
 
 }

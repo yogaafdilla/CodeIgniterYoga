@@ -4,9 +4,12 @@ class Login extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+
+        // if ($this->session->userdata('status') != "login") {
+        //     redirect(base_url("home"));
+        // }
         
         $this->load->model('Modeladmin');
-        $this->load->model('Modeluser');
         $this->load->model('m_login');
     }
 
@@ -29,7 +32,7 @@ class Login extends CI_Controller {
 
             $data_session = array(
                 'nama' => $username,
-                'status_admin' => "login"
+                'status' => "login"
             );
 
             $this->session->set_userdata($data_session);
@@ -38,7 +41,7 @@ class Login extends CI_Controller {
         } else {
             $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
               Username atau Password Salah</div>');
-            redirect ('login/index');
+            redirect ('Login');
         }
     }
 
@@ -54,7 +57,7 @@ class Login extends CI_Controller {
 
     function logout() {
         $this->session->sess_destroy();
-        redirect(base_url('login'));
+        redirect('home');
     }
 
     

@@ -37,7 +37,7 @@
                                 <li><a href="#berita-section" class="nav-link">Berita</a></li>                                    
                                 <li><a href="#services-section" class="nav-link">Fitur</a></li>
                                 <li><a href="#testimonials-section" class="nav-link">Ulasan</a></li>
-                                <li><a href="<?php echo base_url('Login_user/index') ?>" class="nav-link">Login</a></li>
+                                <li><a href="<?php echo base_url('Login_user') ?>" class="nav-link">Login</a></li>
                                 <li class="has-children">
 
                                 </li>
@@ -55,7 +55,7 @@
 
 
 
-        <div class="site-blocks-cover overlay" style="background-image: url(images/hero_2.jpg);" data-aos="fade" id="home-section">
+        <div class="site-blocks-cover overlay" style="background-image: url(nitro/images/hero_2.jpg);" data-aos="fade" id="home-section">
 
             <div class="container">
                 <div class="row align-items-center justify-content-center">
@@ -246,7 +246,7 @@
                         </blockquote>
 
                         <figure class="mb-4 d-flex align-items-center justify-content-center">
-                            <div><img src="images/person_3.jpg" alt="Image" class="w-50 img-fluid mb-3"></div>
+                            <div><img src="nitro/images/person_3.jpg" alt="Image" class="w-50 img-fluid mb-3"></div>
                             <p>John Smith</p>
                         </figure>
                     </div>
@@ -258,7 +258,7 @@
                             <p>&ldquo;Bagusnya e-learning ini ketika kita selsai ujian, selang beberapa hari maka para mahasiswa dapat melihat nilai melalui e-learning tanpa harus bertanya ke akademik..&rdquo;</p>
                         </blockquote>
                         <figure class="mb-4 d-flex align-items-center justify-content-center">
-                            <div><img src="images/person_2.jpg" alt="Image" class="w-50 img-fluid mb-3"></div>
+                            <div><img src="nitro/images/person_2.jpg" alt="Image" class="w-50 img-fluid mb-3"></div>
                             <p>Christine Aguilar</p>
                         </figure>
 

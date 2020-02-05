@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2020 at 01:22 PM
+-- Generation Time: Feb 05, 2020 at 03:14 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -58,8 +58,7 @@ CREATE TABLE `data_login_user` (
 --
 
 INSERT INTO `data_login_user` (`int_npm`, `password`) VALUES
-(17111156, 'da39a3ee5e6b4b0d3255bfef95601890afd80709'),
-(17111111, 'da39a3ee5e6b4b0d3255bfef95601890afd80709');
+(17111156, '12dea96fec20593566ab75692c9949596833adc9');
 
 -- --------------------------------------------------------
 
@@ -89,7 +88,8 @@ INSERT INTO `data_mahasiswa` (`id`, `int_npm`, `str_nama`, `str_prodi`, `str_kel
 (25, 17111114, 'Naufal', 'Desain Komunikasi Visual', 'DKV RM 17 A', 5, 'Logo-avengers-wallpaper-HD-pictures-download5.jpg'),
 (26, 17111115, 'Dendi ', 'Teknik Industri', 'TI WK 15 B', 3, 'Logo-avengers-wallpaper-HD-pictures-download6.jpg'),
 (27, 17111116, 'Nazira', 'Teknik Informatika', 'TIF RM 17 B', 5, 'Logo-avengers-wallpaper-HD-pictures-download7.jpg'),
-(28, 17111117, 'Denar', 'Teknik Informatika', 'TIF WK 18 C', 6, 'Logo-avengers-wallpaper-HD-pictures-download8.jpg');
+(28, 17111117, 'Denar', 'Teknik Informatika', 'TIF WK 18 C', 6, 'Logo-avengers-wallpaper-HD-pictures-download8.jpg'),
+(30, 17111118, 'Azhar', 'Teknik Informatika', 'TIF RP 17 CID C', 5, 'Logo-avengers-wallpaper-HD-pictures-download10.jpg');
 
 --
 -- Indexes for dumped tables
@@ -121,7 +121,7 @@ ALTER TABLE `data_login`
 -- AUTO_INCREMENT for table `data_mahasiswa`
 --
 ALTER TABLE `data_mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
